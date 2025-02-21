@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CageScript : MonoBehaviour
 {
-   
+    public Animator anim;
+
     public GameObject Cage; // L'objet à détruire
     public int collectedObjects = 0;
     private int requiredObjects = 5; // Nombre d'objets requis
@@ -21,6 +22,7 @@ public class CageScript : MonoBehaviour
             if (collectedObjects >= requiredObjects && Cage != null)
             {
                 Destroy(Cage); // Détruit l'objet cible
+                anim.SetBool("Finish", true);
                 Debug.Log("Tous les objets ont été collectés. Objet cible détruit !");
             }
         }

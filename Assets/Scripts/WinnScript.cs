@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WinnScript : MonoBehaviour
 {
-
+    
     
 
     private void OnTriggerEnter(Collider other)
