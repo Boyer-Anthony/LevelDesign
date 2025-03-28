@@ -25,6 +25,7 @@ public class CageScript : MonoBehaviour
             collectedObjects++;
             Destroy(other.gameObject); // Détruit l'objet collecté
 
+            
             // Vérifier si tous les objets requis ont été collectés
             if (collectedObjects >= requiredObjects && Cage != null)
             {
@@ -32,6 +33,15 @@ public class CageScript : MonoBehaviour
                 anim.SetBool("Finish", true);
                 Debug.Log("Tous les objets ont été collectés. Objet cible détruit !");
             }
+        }
+    }
+
+    private void CheeseBlue()
+    {
+        if (gameObject.CompareTag("BlueCheese"))
+        {
+            collectCheeseBlue++;
+            
         }
     }
 }
