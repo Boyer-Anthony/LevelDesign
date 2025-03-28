@@ -10,6 +10,13 @@ public class CageScript : MonoBehaviour
     public int collectedObjects = 0;
     private int requiredObjects = 5; // Nombre d'objets requis
 
+    [Header("Porte bleu")]
+    public GameObject porteBleu;
+    public int collectCheeseBlue = 0;
+    private int requiredCheeseBlue = 1; // Nombre fromage bleu requis
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         // Vérifier si l'objet collecté est un des objets spécifiques

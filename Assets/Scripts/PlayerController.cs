@@ -7,13 +7,22 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float mouseSensitivity = 2f;
     private float rotationX = 0f;
+    private Rigidbody rb;
+    private bool cursorLocked = true;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        LockCursor(); // Verrouille le curseur dès le début
+    }
 
     void Update()
     {
-        // Déplacement du joueur
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.Translate(new Vector3(moveX, 0, moveZ));
+        // Gestion du verrouillage du curseur
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ToggleCursorLock();
+        }
 
         // Rotation de la caméra
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -24,6 +33,27 @@ public class PlayerController : MonoBehaviour
 
         Camera.main.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    void FixedUpdate()
+    {
+        float moveX = Input.GetAxis("Horizontal") * speed;
+        float moveZ = Input.GetAxis("Vertical") * speed;
+
+        Vector3 movement = transform.right * moveX + transform.forward * moveZ;
+        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+    }
+
+    private void ToggleCursorLock()
+    {
+        cursorLocked = !cursorLocked;
+        LockCursor();
+    }
+
+    private void LockCursor()
+    {
+        Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !cursorLocked;
     }
 }
 
