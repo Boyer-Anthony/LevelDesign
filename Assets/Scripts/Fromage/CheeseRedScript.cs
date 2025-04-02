@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 public class CheeseRedScript : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class CheeseRedScript : MonoBehaviour
     public bool zoneStronger;
 
     public GameObject triggerZone;
+    
+    public GameObject TexteStronger;
+
+    public Animator arrowFinish;
+    public Animator arrowFinish2;
 
 
     private void Start()
@@ -30,17 +37,17 @@ public class CheeseRedScript : MonoBehaviour
             {
                 Debug.Log("You feel stronger..");
                 Force = true;     
+                arrowFinish.SetBool("Finish", true);
+                arrowFinish2.SetBool("Finish", true);
             }
         }
 
         // Si il rentre dans la zone Stronger
-        if (other.gameObject.CompareTag("Stronger"))
+        if (other.gameObject.CompareTag("Stronger") && collectCheeseRed >= requiredCheeseRed)
         {
             zoneStronger = true;
+            TexteStronger.SetActive(true);
             Debug.Log("TriggerZone");
-
-          
-
         }
         
     }
@@ -50,6 +57,7 @@ public class CheeseRedScript : MonoBehaviour
         if (other.gameObject.CompareTag("Stronger"))
         {
             zoneStronger = false;
+            TexteStronger.SetActive(false);   
         }
     }
 
