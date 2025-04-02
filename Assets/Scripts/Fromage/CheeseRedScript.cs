@@ -67,6 +67,7 @@ public class CheeseRedScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && Force && zoneStronger)
         {
             Destroy(grillExit);
+            TexteStronger.SetActive(false);
         }
     }
 
