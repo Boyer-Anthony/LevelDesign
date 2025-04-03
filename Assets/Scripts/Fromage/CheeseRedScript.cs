@@ -60,6 +60,9 @@ public class CheeseRedScript : MonoBehaviour
             son.Play();
             Destroy(other.gameObject);
 
+            // Affiche l'UI fromage rouge.
+            scoreCheeseRed.SetActive(true);
+
             // Vérifier si tous les objets requis ont été collectés
             if (collectCheeseRed >= requiredCheeseRed)
             {

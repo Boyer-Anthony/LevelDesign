@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         LockCursor(); // Verrouille le curseur dès le début
+        Application.targetFrameRate = 144;
     }
 
     void Update()
