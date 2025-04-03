@@ -13,7 +13,7 @@ public class CageScript : MonoBehaviour
     [Header("Porte bleu")]
     public GameObject porteBleu;
     public int collectCheeseBlue = 0;
-    private int requiredCheeseBlue = 1; // Nombre fromage bleu requis
+    //private int requiredCheeseBlue = 1; // Nombre fromage bleu requis
 
 
 

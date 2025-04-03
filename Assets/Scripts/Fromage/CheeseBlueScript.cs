@@ -10,6 +10,7 @@ public class CheeseBlueScript : MonoBehaviour
     public int collectCheeseBlue = 0;
     private int requiredCheeseBlue = 1; // Nombre fromage bleu requis
 
+  
 
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +19,8 @@ public class CheeseBlueScript : MonoBehaviour
         {
             collectCheeseBlue++;
             Destroy(this.gameObject);
+
+          
 
             // Vérifier si tous les objets requis ont été collectés
             if (collectCheeseBlue >= requiredCheeseBlue)
