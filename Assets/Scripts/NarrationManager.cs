@@ -12,6 +12,8 @@ public class NarrationManager : MonoBehaviour
     public GameObject panelVoix;
     [Header("Sirius Black")]
     public GameObject panelSiriusBlack;
+    [Header("Mort")]
+    public GameObject panelMort;
 
 
 
@@ -47,6 +49,15 @@ public class NarrationManager : MonoBehaviour
 
                 // Affiche le texte
                 panelSiriusBlack.SetActive(true);
+                break;
+
+            case "Mort":
+
+                // DÈsactive l'UI fromageScore
+                scoreFromage.SetActive(false);
+
+                // Affiche le texte
+                panelMort.SetActive(true);
                 break;
 
 
@@ -95,6 +106,16 @@ public class NarrationManager : MonoBehaviour
                 // DÈsactive le texte
                 panelSiriusBlack.SetActive(false);
                 break;
+
+            case "Mort":
+
+                // RÈActive l'UI fromageScore
+                scoreFromage.SetActive(true);
+
+                // DÈsactive le texte
+                panelMort.SetActive(false);
+                break;
+
 
             case null:
                 Debug.Log($"{other.tag} introuvable");

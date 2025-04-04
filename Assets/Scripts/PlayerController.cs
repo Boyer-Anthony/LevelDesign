@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool cursorLocked = true;
     public bool start;
+    public GameObject créateur;
 
     void Start()
     {
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Détruire le troll après les battement de cils.
+        Destroy(créateur, 8.1f);
+
         // Gestion du verrouillage du curseur
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical") * speed;
 
         Vector3 movement = transform.right * moveX + transform.forward * moveZ;
+
         if (!start)
         {
             rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
