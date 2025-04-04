@@ -9,12 +9,16 @@ public class PlayerController : MonoBehaviour
     private float rotationX = 0f;
     private Rigidbody rb;
     private bool cursorLocked = true;
+    public bool start;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         LockCursor(); // Verrouille le curseur dès le début
         Application.targetFrameRate = 144;
+
+        StartCoroutine(Waiting());
+        start = true;
     }
 
     void Update()
@@ -42,7 +46,11 @@ public class PlayerController : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical") * speed;
 
         Vector3 movement = transform.right * moveX + transform.forward * moveZ;
-        rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+        if (!start)
+        {
+            rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+        }
+        
     }
 
     private void ToggleCursorLock()
@@ -55,6 +63,12 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !cursorLocked;
+    }
+
+    private IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(11f);
+        start = false;
     }
 }
 
