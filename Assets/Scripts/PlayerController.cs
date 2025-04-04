@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(11f);
+        yield return new WaitForSeconds(1f);
         start = false;
     }
 }

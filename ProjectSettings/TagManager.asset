@@ -12,6 +12,8 @@ TagManager:
   - Voix 1
   - SiriusBlack
   - Mort
+  - Screamer
+  - ScreamMove
   layers:
   - Default
   - TransparentFX

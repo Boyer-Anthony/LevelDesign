@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class NarrationManager : MonoBehaviour
@@ -14,6 +15,19 @@ public class NarrationManager : MonoBehaviour
     public GameObject panelSiriusBlack;
     [Header("Mort")]
     public GameObject panelMort;
+    [Header("Screamer")]
+    public GameObject panelScreamer;
+    public GameObject triggerScreamer;
+    public Animator moveScreamer;
+    [Header("Audio")]
+    public AudioClip whiteNoice;
+    private AudioSource son;
+
+    private void Start()
+    {
+        son = GetComponent<AudioSource>();
+        
+    }
 
 
 
@@ -60,14 +74,30 @@ public class NarrationManager : MonoBehaviour
                 panelMort.SetActive(true);
                 break;
 
+            case "Screamer":
+
+                
+                // Désactive l'UI fromageScore
+                scoreFromage.SetActive(false);
+
+                // Affiche le texte
+                panelScreamer.SetActive(true);
+
+                // Joue le son du screamer
+                AudioManager.Instance.ScreamerPlay();
+                /*son.clip = whiteNoice;
+                son.Play();*/
+                break;
+
+            case "ScreamMove":
+
+                // Attendre quelque seconde avant de jouer l'animation
+                StartCoroutine(Waiting());
+                break;
 
             case null:
                 Debug.Log("Rien ne se passe...");
                 break;
-
-
-
-
 
 
         }
@@ -116,6 +146,22 @@ public class NarrationManager : MonoBehaviour
                 panelMort.SetActive(false);
                 break;
 
+            case "Screamer":
+
+                // Désactive l'UI fromageScore
+                scoreFromage.SetActive(true);
+
+                // Désactive l'ui screamer
+                panelScreamer.SetActive(false);
+
+                // Désactive le son
+                AudioManager.Instance.ScreamerStop();
+                //son.Stop();
+
+                // Détruit la trigger
+                Destroy(triggerScreamer);
+                break;
+
 
             case null:
                 Debug.Log($"{other.tag} introuvable");
@@ -125,7 +171,14 @@ public class NarrationManager : MonoBehaviour
         }
 
 
+    }
 
+    private IEnumerator Waiting()
+    {
+        Debug.Log("coro");
+        yield return new WaitForSeconds(1f);
 
+        // Animation Screamer
+        moveScreamer.SetBool("Move", true);
     }
 }

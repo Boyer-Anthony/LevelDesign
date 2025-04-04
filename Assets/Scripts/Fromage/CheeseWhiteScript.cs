@@ -12,6 +12,7 @@ public class CheeseWhiteScript : MonoBehaviour
     [Header("Score White")]
     public GameObject scoreCheeseWhite;
     public TextMeshProUGUI scoreText;
+    public GameObject screamer;
 
     private void Update()
     {
@@ -28,6 +29,9 @@ public class CheeseWhiteScript : MonoBehaviour
         {
             collectCheeseWhite++;
             Destroy(this.gameObject, 0.1f);
+
+            // Active le screamer après avoir manger le fromage blanc
+            screamer.SetActive(true);
 
            
 
