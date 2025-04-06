@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Détruire le troll après les battement de cils.
-        Destroy(créateur, 8.1f);
+        Destroy(créateur, 8.2f);
 
         // Gestion du verrouillage du curseur
         if (Input.GetKeyDown(KeyCode.Space))
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(11f);
         start = false;
     }
 }

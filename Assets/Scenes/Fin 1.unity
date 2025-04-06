@@ -207,6 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 289688363}
   - component: {fileID: 289688362}
+  - component: {fileID: 289688364}
   m_Layer: 0
   m_Name: FinManager
   m_TagString: Untagged
@@ -245,6 +246,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &289688364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289688361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49e530988bcb09f49b9b31c87414207d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &298405229
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +782,7 @@ GameObject:
   - component: {fileID: 1592392673}
   - component: {fileID: 1592392672}
   - component: {fileID: 1592392671}
+  - component: {fileID: 1592392674}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -839,7 +853,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592392672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1592392674}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SkipEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1592392672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +904,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592392669}
   m_CullTransparentMesh: 1
+--- !u!114 &1592392674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592392669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e2c5db86c9aa549b6e52812e948719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1616356030
 GameObject:
   m_ObjectHideFlags: 0

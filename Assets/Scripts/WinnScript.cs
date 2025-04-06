@@ -5,22 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class WinnScript : MonoBehaviour
 {
-    
+    public GameObject Transition;
     
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Transition.SetActive(true);
+            StartCoroutine(WaitingEnd1());
+            
+        }
+        else if (this.gameObject.CompareTag("EndTwo") && other.gameObject.CompareTag("Player"))
+        {
+            Transition.SetActive(true);
+            StartCoroutine(WaitingEnd2());
+            
+        }
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    // Start is called before the first frame update
-    void Start()
+    
+    private IEnumerator WaitingEnd1()
     {
-        
+        yield return new WaitForSeconds(3.30f);
+        SceneManager.LoadScene(1);
     }
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator WaitingEnd2()
     {
-        
+        yield return new WaitForSeconds(3.30f);
+        SceneManager.LoadScene(2);
     }
 }

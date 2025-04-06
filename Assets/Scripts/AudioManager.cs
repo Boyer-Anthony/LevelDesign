@@ -6,8 +6,13 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    public GameObject lightening;
+    public GameObject titan;
+
     [Header("Audio")]
     public AudioClip whiteNoice;
+    public AudioClip audioTitan;
+    public AudioClip souricière;
     private AudioSource son;
 
     private void Awake()
@@ -33,9 +38,45 @@ public class AudioManager : MonoBehaviour
         son.clip = whiteNoice;
         son.Play();
     }
+    public void ScreamerAudioPlay()
+    {
+        son.clip = souricière;
+        son.Play();
+    }
     
     public void ScreamerStop()
     {
         son.Stop();
+    }
+    
+    public void ScreamerAudioStop()
+    {
+        son.Stop();
+    }
+
+    public void TitanAudio()
+    {
+        son.clip = audioTitan;
+        son.Play();
+    }
+
+    public void TitanSpawn()
+    {
+        StartCoroutine(TitanWait());
+    }
+
+
+    private IEnumerator TitanWait()
+    {
+        yield return new WaitForSeconds(6f);
+
+        // Active le titan
+        lightening.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        lightening.SetActive(false);
+        titan.SetActive(true);
+
     }
 }

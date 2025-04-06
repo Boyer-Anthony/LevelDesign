@@ -14,6 +14,12 @@ TagManager:
   - Mort
   - Screamer
   - ScreamMove
+  - EndOne
+  - EndTwo
+  - SiriusBlackDead
+  - Lettre
+  - "Pi\xE8ge"
+  - SlenderMan
   layers:
   - Default
   - TransparentFX

@@ -40,6 +40,8 @@ public class CheeseWhiteScript : MonoBehaviour
             {
                 Destroy(grillWhite); // Détruit la porte bleu
 
+                CheeseManager.Instance.FinNumberOne();
+
                 Debug.Log("La grille blanche à sauter");
             }
 

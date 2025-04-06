@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class CheeseBlueScript : MonoBehaviour
 {
+   
+    public GameObject titan;
     public GameObject grillBlue;
     public int collectCheeseBlue = 0;
     private int requiredCheeseBlue = 1; // Nombre fromage bleu requis
@@ -27,19 +29,29 @@ public class CheeseBlueScript : MonoBehaviour
             collectCheeseBlue++;
             Destroy(this.gameObject, 0.1f);
 
+            // Active le son
+            AudioManager.Instance.TitanAudio();
+            AudioManager.Instance.TitanSpawn();
+
+            
+
           
 
             // Vérifier si tous les objets requis ont été collectés
             if (collectCheeseBlue >= requiredCheeseBlue)
             {
                 Destroy(grillBlue); // Détruit la porte bleu
-               
+
+                CheeseManager.Instance.FinNumberOne();
+
                 Debug.Log("La grille bleu à sauter");
             }
 
 
         }
     }
+
+    
 
    
 

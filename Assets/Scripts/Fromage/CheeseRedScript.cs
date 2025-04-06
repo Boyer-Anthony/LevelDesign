@@ -7,6 +7,8 @@ using UnityEngine.Scripting;
 
 public class CheeseRedScript : MonoBehaviour
 {
+    public GameObject Createur;
+    public GameObject End2;
     public GameObject grillExit;
     public int collectCheeseRed = 0;
     private int requiredCheeseRed = 3; // Nombre fromage mauve requis
@@ -18,8 +20,7 @@ public class CheeseRedScript : MonoBehaviour
     
     public GameObject TexteStronger;
 
-    public Animator arrowFinish;
-    public Animator arrowFinish2;
+   
 
     public AudioClip eating;
     private AudioSource son;
@@ -67,9 +68,13 @@ public class CheeseRedScript : MonoBehaviour
             if (collectCheeseRed >= requiredCheeseRed)
             {
                 Debug.Log("You feel stronger..");
-                Force = true;     
-                arrowFinish.SetBool("Finish", true);
-                arrowFinish2.SetBool("Finish", true);
+                Force = true;
+
+                // Active la Grill exit pour s'enfuir
+                grillExit.SetActive(true);
+                End2.SetActive(true);
+                Createur.SetActive(false);
+
             }
         }
 
